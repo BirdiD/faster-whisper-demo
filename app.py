@@ -39,9 +39,11 @@ description = '''Whisper Demo with a fine-tuned checkpoint by bofenghuang'''
 
 iface = gr.Interface(fn=infer,
                      inputs=[
-                         gr.Audio(sources=["microphone", "upload"], type="filepath", label="Record or upload file")
+                         gr.Audio(sources=["upload"], type="filepath", label="Record or upload file")
                          ],
                      outputs=gr.Textbox(label="Transcription"),
                      description=description
                      )
-iface.launch()
+
+iface.queue().launch(share=True)
+#iface.launch(share=True)
